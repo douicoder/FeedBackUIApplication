@@ -1,4 +1,5 @@
-﻿using SignInAndSignUpUI;
+﻿using FeedBackUIApplication.Pages;
+using SignInAndSignUpUI;
 
 namespace FeedBackUIApplication
 {
@@ -11,9 +12,9 @@ namespace FeedBackUIApplication
             InitializeComponent();
         }
 
-        private  void TapGestureRecognizer_Tapped_For_SignUP(object sender, EventArgs e)
+        private async void  ContinueClicked(object sender, EventArgs e)
         {
-            count++;
+            await Navigation.PushAsync(new FeedBackQuestions());
         }
     }
 

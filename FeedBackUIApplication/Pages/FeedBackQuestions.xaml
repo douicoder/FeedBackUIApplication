@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:FeedBackUIApplication.Pages"
+             x:Class="FeedBackUIApplication.Pages.FeedBackQuestions"
+             Title="Feedback">
+
+    <!--<ContentPage.BindingContext>
+        <local:FeedbackViewModel/>
+    </ContentPage.BindingContext>-->
+
+    <Grid RowDefinitions="1*,8*,1*">
+        <!-- Top Right Circular Frames -->
+        <Frame BackgroundColor="#FFCFD0D8" Grid.Row="0" HorizontalOptions="EndAndExpand"
+               Padding="0" Margin="0,-80,-80,0" HeightRequest="250" WidthRequest="250" CornerRadius="125" />
+        <Frame BackgroundColor="{StaticResource Primary}" Grid.Row="0" HorizontalOptions="EndAndExpand"
+               Padding="0" Margin="0,-120,-120,0" HeightRequest="250" WidthRequest="250" CornerRadius="125" />
+
+        <!-- Main Content (Cool Box) -->
+        <Frame BackgroundColor="White" BorderColor="{StaticResource Primary}" 
+               Grid.Row="1" VerticalOptions="CenterAndExpand" Margin="30,0,40,30" Padding="20" 
+               HasShadow="True">
+            <ScrollView>
+                <VerticalStackLayout Spacing="25"  >
+                    <!-- Heading -->
+                    <Label Text="We Value Your Feedback" FontSize="28" FontAttributes="Bold" 
+                           TextColor="{StaticResource Primary}" HorizontalOptions="Center" />
+
+                    <!-- Visit Date Question -->
+                    <Label Text="When did you visit us?" FontSize="Medium" />
+                    <VerticalStackLayout x:Name="RadioButtonGroupVisitDate">
+                        <RadioButton Content="Today" GroupName="VisitDate" x:Name="rbtoday" />
+                        <RadioButton Content="Yesterday" GroupName="VisitDate" x:Name="rbyesterda" />
+                        <RadioButton Content="A week ago" GroupName="VisitDate"  x:Name="rbweek" />
+                        <RadioButton Content="I don't know" GroupName="VisitDate" x:Name="rbdontknow" />
+                    </VerticalStackLayout>
+
+                    <!-- Experience Question -->
+                    <Label Text="How was your experience?" FontSize="Medium" />
+                    <VerticalStackLayout x:Name="RadioButtonGroupExperience">
+                        <RadioButton Content="Good" GroupName="Experience" x:Name="rbGood" />
+                        <RadioButton Content="Excellent" GroupName="Experience" x:Name="rbExcellent" />
+                        <RadioButton Content="Bad" GroupName="Experience" x:Name="rbBad" />
+                        <RadioButton Content="Very Poor" GroupName="Experience" x:Name="rbVeryPoor" />
+                    </VerticalStackLayout>
+                    <!-- Purchase Question -->
+                    <Label Text="Did you make a purchase?" FontSize="Medium" />
+                    <VerticalStackLayout x:Name="RadioButtonGroupPurchase">
+                        <RadioButton Content="Yes" GroupName="Purchase" x:Name="rbPurchaseYes" CheckedChanged="IsPurchaseYesorNo" />
+                        <RadioButton Content="No" GroupName="Purchase" x:Name="rbPurchaseNo" CheckedChanged="IsPurchaseYesorNo"/>
+                    </VerticalStackLayout>
+
+                    <!-- Satisfaction Question, Visible if Purchase is Yes -->
+                    <StackLayout x:Name="SatisfedBox" IsVisible="False">
+                        <Label Text="Were you satisfied with your purchase?" FontSize="Medium" />
+                        <VerticalStackLayout >
+                            <RadioButton Content="Yes" GroupName="Satisfaction" IsChecked="{Binding Satisfaction}" />
+                            <RadioButton Content="No" GroupName="Satisfaction" IsChecked="{Binding Satisfaction}" />
+                        </VerticalStackLayout>
+                    </StackLayout>
+
+                    <!-- Recommendation Question -->
+                    <Label Text="How likely are you to recommend us?" FontSize="Medium" />
+                    <VerticalStackLayout x:Name="RadioButtonGroupRecommendation">
+                        <RadioButton Content="Very Likely" GroupName="Recommendation" x:Name="rbVeryLikely" />
+                        <RadioButton Content="Likely" GroupName="Recommendation" x:Name="rbLikely" />
+                        <RadioButton Content="Neutral" GroupName="Recommendation" x:Name="rbNeutral" />
+                        <RadioButton Content="Unlikely" GroupName="Recommendation" x:Name="rbUnlikely" />
+                        <RadioButton Content="Very Unlikely" GroupName="Recommendation" x:Name="rbVeryUnlikely" />
+                    </VerticalStackLayout>
+
+                    <!-- Submit Button -->
+                    <!--<Button Text="Submit" Command="{Binding SubmitFeedback}" BackgroundColor="{StaticResource Primary}" TextColor="White" />-->
+                    <Button Text="Submit" Clicked="onclick" BackgroundColor="{StaticResource Primary}" TextColor="White" />
+                </VerticalStackLayout>
+            </ScrollView>
+        </Frame>
+
+        <!-- Bottom Left Circular Frames -->
+        <Frame BackgroundColor="#cfd0d8" Grid.Row="2" VerticalOptions="EndAndExpand"
+               HorizontalOptions="StartAndExpand" Padding="0" Margin="0,0,0,-180" HeightRequest="250" WidthRequest="250" CornerRadius="125" />
+        <Frame BackgroundColor="{StaticResource Primary}" Grid.Row="2" VerticalOptions="EndAndExpand"
+               HorizontalOptions="StartAndExpand" Padding="0" Margin="0,0,0,-200" HeightRequest="250" WidthRequest="250" CornerRadius="125" />
+    </Grid>
+</ContentPage>
